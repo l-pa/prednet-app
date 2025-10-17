@@ -16,6 +16,8 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as LayoutRouteImport } from './routes/_layout'
 import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
 import { Route as LayoutSettingsRouteImport } from './routes/_layout/settings'
+import { Route as LayoutProteinsRouteImport } from './routes/_layout/proteins'
+import { Route as LayoutNetworksRouteImport } from './routes/_layout/networks'
 import { Route as LayoutItemsRouteImport } from './routes/_layout/items'
 import { Route as LayoutAdminRouteImport } from './routes/_layout/admin'
 
@@ -53,6 +55,16 @@ const LayoutSettingsRoute = LayoutSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutProteinsRoute = LayoutProteinsRouteImport.update({
+  id: '/proteins',
+  path: '/proteins',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutNetworksRoute = LayoutNetworksRouteImport.update({
+  id: '/networks',
+  path: '/networks',
+  getParentRoute: () => LayoutRoute,
+} as any)
 const LayoutItemsRoute = LayoutItemsRouteImport.update({
   id: '/items',
   path: '/items',
@@ -71,6 +83,8 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/admin': typeof LayoutAdminRoute
   '/items': typeof LayoutItemsRoute
+  '/networks': typeof LayoutNetworksRoute
+  '/proteins': typeof LayoutProteinsRoute
   '/settings': typeof LayoutSettingsRoute
   '/': typeof LayoutIndexRoute
 }
@@ -81,6 +95,8 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/admin': typeof LayoutAdminRoute
   '/items': typeof LayoutItemsRoute
+  '/networks': typeof LayoutNetworksRoute
+  '/proteins': typeof LayoutProteinsRoute
   '/settings': typeof LayoutSettingsRoute
   '/': typeof LayoutIndexRoute
 }
@@ -93,6 +109,8 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/_layout/admin': typeof LayoutAdminRoute
   '/_layout/items': typeof LayoutItemsRoute
+  '/_layout/networks': typeof LayoutNetworksRoute
+  '/_layout/proteins': typeof LayoutProteinsRoute
   '/_layout/settings': typeof LayoutSettingsRoute
   '/_layout/': typeof LayoutIndexRoute
 }
@@ -105,6 +123,8 @@ export interface FileRouteTypes {
     | '/signup'
     | '/admin'
     | '/items'
+    | '/networks'
+    | '/proteins'
     | '/settings'
     | '/'
   fileRoutesByTo: FileRoutesByTo
@@ -115,6 +135,8 @@ export interface FileRouteTypes {
     | '/signup'
     | '/admin'
     | '/items'
+    | '/networks'
+    | '/proteins'
     | '/settings'
     | '/'
   id:
@@ -126,6 +148,8 @@ export interface FileRouteTypes {
     | '/signup'
     | '/_layout/admin'
     | '/_layout/items'
+    | '/_layout/networks'
+    | '/_layout/proteins'
     | '/_layout/settings'
     | '/_layout/'
   fileRoutesById: FileRoutesById
@@ -189,6 +213,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutSettingsRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/proteins': {
+      id: '/_layout/proteins'
+      path: '/proteins'
+      fullPath: '/proteins'
+      preLoaderRoute: typeof LayoutProteinsRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/networks': {
+      id: '/_layout/networks'
+      path: '/networks'
+      fullPath: '/networks'
+      preLoaderRoute: typeof LayoutNetworksRouteImport
+      parentRoute: typeof LayoutRoute
+    }
     '/_layout/items': {
       id: '/_layout/items'
       path: '/items'
@@ -209,6 +247,8 @@ declare module '@tanstack/react-router' {
 interface LayoutRouteChildren {
   LayoutAdminRoute: typeof LayoutAdminRoute
   LayoutItemsRoute: typeof LayoutItemsRoute
+  LayoutNetworksRoute: typeof LayoutNetworksRoute
+  LayoutProteinsRoute: typeof LayoutProteinsRoute
   LayoutSettingsRoute: typeof LayoutSettingsRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
 }
@@ -216,6 +256,8 @@ interface LayoutRouteChildren {
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAdminRoute: LayoutAdminRoute,
   LayoutItemsRoute: LayoutItemsRoute,
+  LayoutNetworksRoute: LayoutNetworksRoute,
+  LayoutProteinsRoute: LayoutProteinsRoute,
   LayoutSettingsRoute: LayoutSettingsRoute,
   LayoutIndexRoute: LayoutIndexRoute,
 }

@@ -47,7 +47,7 @@ function UsersTable() {
   const setPage = (page: number) => {
     navigate({
       to: "/admin",
-      search: (prev) => ({ ...prev, page }),
+      search: (prev : any) => ({ ...prev, page }),
     })
   }
 
@@ -76,7 +76,7 @@ function UsersTable() {
               <Table.Cell color={!user.full_name ? "gray" : "inherit"}>
                 {user.full_name || "N/A"}
                 {currentUser?.id === user.id && (
-                  <Badge ml="1" colorScheme="teal">
+                  <Badge ml="1">
                     You
                   </Badge>
                 )}
